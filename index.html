@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!--<script src="https://use.fontawesome.com/b0c254e259.js"></script>-->
+    <link rel="stylesheet" href="dist/app.css" type="text/css"/>
+</head>
+
+<body>
+<div class="app" id="app">
+
+    <carousel
+            constant-speed
+            delta="bounce"
+            speed="500"
+            :slide-to-show="{xs: 1,sm:2, md:3, lg:4, xl:5}"
+            :slide-to-scroll="{sm:2, xl:3}"
+            current-slide="2"
+    >
+
+        <slide
+                src="dist/imgs/example1.jpg"
+                title="some title"
+                author="amine"
+                description="hello world">
+        </slide>
+
+        <slide
+                src="dist/imgs/example2.jpg"
+                title="some title"
+                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, magni, unde, repudiandae omnis maiores illo iste tempore officiis ex libero voluptates cumque alias repellendus consequuntur soluta veniam molestiae aliquid veritatis.">
+        </slide>
+
+        <slide src="dist/imgs/example3.jpg" title="some title"
+               description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, magni, unde, repudiandae omnis maiores illo iste tempore officiis ex libero voluptates cumque alias repellendus consequuntur soluta veniam molestiae aliquid veritatis."></slide>
+        <slide src="dist/imgs/example4.jpg" title="some title"
+               description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, magni, unde, repudiandae omnis maiores illo iste tempore officiis ex libero voluptates cumque alias repellendus consequuntur soluta veniam molestiae aliquid veritatis."></slide>
+        <slide src="dist/imgs/example5.jpg" title="some title"
+               description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, magni, unde, repudiandae omnis maiores illo iste tempore officiis ex libero voluptates cumque alias repellendus consequuntur soluta veniam molestiae aliquid veritatis.">
+        </slide>
+        <slide src="dist/imgs/example6.jpg" title="some title"
+               description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, magni, unde, repudiandae omnis maiores illo iste tempore officiis ex libero voluptates cumque alias repellendus consequuntur soluta veniam molestiae aliquid veritatis."></slide>
+        <slide src="dist/imgs/example7.jpg" title="some title"
+               description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, magni, unde, repudiandae omnis maiores illo iste tempore officiis ex libero voluptates cumque alias repellendus consequuntur soluta veniam molestiae aliquid veritatis."></slide>
+        <slide src="dist/imgs/example8.jpg" title="some title"
+               description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, magni, unde, repudiandae omnis maiores illo iste tempore officiis ex libero voluptates cumque alias repellendus consequuntur soluta veniam molestiae aliquid veritatis."></slide>
+
+    </carousel>
+
+</div>
+
+<div class="app" style="padding:.6em; background: #eee; text-align: center">hello</div>
+
+
+<script type="text/javascript" src="dist/build.js"></script>
+</body>
+
+</html>
