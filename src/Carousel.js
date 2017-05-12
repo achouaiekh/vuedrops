@@ -1,20 +1,23 @@
 import  Animation from 'vuedrops-animate'
 
+
 export default class {
 
 
     constructor(vm) {
 
         this.vm = vm
+
         this.el = vm.$el
 
         this.initialize()
 
         this.setProps()
 
+        this.setup()
+
         this.init()
 
-        this.setup()
 
         this.initEvents()
     }
@@ -45,9 +48,10 @@ export default class {
         this.imgLoaded = false
         this.__display = 'block'
         this.touch = {}
-        this.swipeLeft = null
+        this.touch.swipeLength = 0
+        this.touch.swipeLength = 0
         this.dragging = false
-
+        this.offestLeft = 0
     }
 
     setProps() {
@@ -77,9 +81,9 @@ export default class {
             this.slideToScrollCount = slideToScroll
         }
 
-        Array.of("xs", "sm", "md", "lg", "xl")
+        Object.keys(this.breakpoints)
+            .sort((a, b) => a - b)
             .forEach(breakpoint => {
-
                 if (screenWidth > this.breakpoints[breakpoint]) {
 
                     if (typeof slideToShow === 'object' && slideToShow.hasOwnProperty(breakpoint) && typeof slideToShow[breakpoint] === 'number')
@@ -123,6 +127,8 @@ export default class {
             easing: this.easing,
             context: this,
         })
+
+        this.breakpoints = Object.assign({}, BREAKPOINTS, this.breakpoints)
 
 
         if (this.vertical) this.el.classList.add('vertical')
@@ -279,6 +285,9 @@ export default class {
 
         this.track.style[prop] = position + 'px'
 
+        this.offsetLeft = position
+
+
         return this
     }
 
@@ -324,9 +333,9 @@ export default class {
         this.animateSlide()
     }
 
-    interrupt(){
-        return (this.animationInterruptDisabled && this.animating) || this.slideToShowCount == this.slideCount
-
+    interrupt() {
+        return (this.animationInterruptDisabled && this.animating) ||
+            this.slideToShowCount <= this.slideToScrollCount
     }
 
     rectifyNext() {
@@ -339,7 +348,7 @@ export default class {
 
             if (!this.fade) {
                 this.previousSlide = this.slideToScrollCount == 1 ?
-                    -1 : -(lastIndex) % this.slideToScrollCount - 1
+                    -1 : -(lastIndex % this.slideToScrollCount) - 1
             }
         }
     }
@@ -473,9 +482,10 @@ export default class {
 
         event.preventDefault()
 
-        if (this.disableSwipe || this.fade || this.animating) return false
-
         this.touch.fingerCount = event.changedTouches !== undefined ? event.changedTouches.length : 1
+
+        if (this.disableSwipe || this.fade || this.interrupt() || this.touch.fingerCount !== 1) return false
+
 
         switch (event.type) {
             case 'touchstart':
@@ -505,86 +515,87 @@ export default class {
 
     swipeStart(event) {
 
-        if (this.dragging) return
+        if (this.dragging) return false
 
-        let touches
+        this.track.style.cursor = "-webkit-grab"
 
-        if (this.touch.fingerCount !== 1 || this.slideCount <= this.slideToShowCount) {
-            this.touch = {}
-            return false
-        }
-
-        if (event.changedTouches !== undefined) {
-            touches = event.changedTouches[0]
-        }
-
-        this.touch.startX = this.touch.curX = touches !== undefined ? touches.pageX : event.clientX;
-        this.touch.startY = this.touch.curY = touches !== undefined ? touches.pageY : event.clientY;
-        this.touch.swipeLength = 0
-
-        this.track.classList.add('grab')
         this.dragging = true
 
+        this.touch.animating = this.animating
+
+        this.animation.stop()
+
+        let touches = event.changedTouches && event.changedTouches[0]
+
+        this.touch.startX = this.touch.curX = touches !== undefined ? touches.pageX : event.clientX
+        this.touch.startY = this.touch.curY = touches !== undefined ? touches.pageY : event.clientY
+
+        this.touch.swipeLength = 0
+
+        this.touch.offsetLeft = this.offsetLeft
+
+        this.setLeft(this.touch.offsetLeft)
 
     }
 
     swipeMove(event) {
 
-        if (!this.dragging || this.touch.fingerCount !== 1) {
-            this.touch.left = false;
-            return false;
-        }
+        if (!this.dragging) return false
 
-        let touches = event.changerdTouches
+        this.track.style.cursor = '-webkit-grabbing'
 
-        let curLeft = this.calculateLeft()
+        let touches = event.changedTouches && event.changedTouches[0]
 
-        this.touch.curX = touches !== undefined ? touches[0].pageX : event.clientX
-        this.touch.curY = touches !== undefined ? touches[0].pageY : event.clientY
+        this.touch.curX = touches !== undefined ? touches.pageX : event.clientX
+        this.touch.curY = touches !== undefined ? touches.pageY : event.clientY
 
         this.touch.swipeLength = this.vertical ?
             this.touch.curY - this.touch.startY :
             this.touch.curX - this.touch.startX
 
-        this.touch.left = this.calculateLeft(this.previousSlide) + this.touch.swipeLength
+        let offsetLeft = this.touch.offsetLeft + this.touch.swipeLength
 
-        this.track.classList.remove('grab')
-        this.track.classList.add('grabbing')
+        this.touch.direction = Math.sign(this.touch.swipeLength)
 
-        this.setLeft(this.touch.left)
+        if (offsetLeft > this.calculateLeft(0) && this.touch.swipeLength > 0) this.touch.offsetLeft = this.calculateLeft(this.slideCount)
+        if (offsetLeft < this.calculateLeft(Math.trunc((this.slides.length - 1) / this.slideToShowCount) * this.slideToShowCount) && this.touch.swipeLength < 0) this.touch.offsetLeft = this.calculateLeft(-(this.slideCount - 1) % this.slideToScrollCount - 1)
+
+        this.setLeft(this.touch.offsetLeft + this.touch.swipeLength)
     }
 
     swipeEnd(event) {
 
-        this.track.classList.remove('grab')
-        this.track.classList.remove('grabbing')
-
         if (!this.dragging) return false
 
-        if (Math.abs(this.touch.swipeLength) < this.minSwipeDistance)
-            this.animateSlide(this.previousSlide, this.touch.left)
+        this.dragging = false
+
+        this.track.style.cursor = "default"
+
+        let offsetLeft = this.touch.offsetLeft + this.touch.swipeLength
+
+        if (Math.abs(this.touch.swipeLength) < this.minSwipeDistance && !this.touch.animating)
+            this.animateSlide(this.previousSlide, offsetLeft)
 
         else {
 
-            let direction = Math.sign(this.touch.swipeLength),
+            let direction = this.touch.direction = Math.sign(this.touch.swipeLength),
                 i = 0
+
 
             while (++i) {
                 this.currentSlide -= direction * this.slideToScrollCount
+
+                this.rectifyNext()
+                this.rectifyPrevious()
+
                 let position = this.calculateLeft(this.currentSlide)
-                if (direction * (position - this.touch.left) >= 0 || i > this.slideCount) break
+                if (direction * (position - offsetLeft) >= 0 || i > this.slideCount) break
             }
 
-            this.rectifyNext()
-            this.rectifyPrevious()
 
-            this.touch.left = this.calculateLeft(this.previousSlide) + this.touch.swipeLength
-
-            this.animateSlide(this.currentSlide, this.touch.left)
+            this.animateSlide(this.currentSlide, offsetLeft)
         }
 
-        this.dragging = false
-        this.touch = {}
     }
 
     proxy(fn, object = this) {
@@ -593,5 +604,25 @@ export default class {
         }
     }
 
+    sort(object) {
 
+        let temp = {}
+
+        Object.keys(object)
+            .sort((a, b) => object[a] - object[b])
+            .forEach((key) => {
+                temp[key] = object[key]
+            })
+
+        return object = temp
+    }
+
+}
+
+const BREAKPOINTS = {
+    xs: 0,
+    sm: 576,
+    md: 768,
+    lg: 992,
+    xl: 1200
 }
