@@ -1,17 +1,22 @@
 export default {
 
     slideToShow: {
-        type: [Number, Object],
+        type: [Number, Object, String],
         default: 1,
     },
 
     slideToScroll: {
-        type: [Number, Object],
+        type: [Number, Object, String],
         default: 1,
     },
 
+    breakpoints: {
+        type: Object,
+    },
+
     currentSlide: {
-        type: Number,
+        type: [Number, String],
+        type: [Number, String],
         default: 0,
     },
 
@@ -26,7 +31,7 @@ export default {
     },
 
     speed: {
-        type: Number,
+        type: [Number, String],
         default: 150,
     },
 
@@ -35,23 +40,29 @@ export default {
         default: false,
     },
 
-    easing: {
+    slideEasing: {
         type: String,
         default: 'linear',
     },
 
+    heightEasing: {
+        type: String,
+        default: 'linear',
+    },
 
-
-    breakpoints: {
-        type: Object,
-        default: function () {
-            return
-        },
+    fadeEasing: {
+        type: String,
+        default: 'linear',
     },
 
     autoplay: {
         type: Boolean,
         default: false
+    },
+
+    autoplayDelay: {
+        type: [Number, String],
+        default: 5000,
     },
 
     disableSwipe: {
@@ -60,18 +71,14 @@ export default {
     },
 
     minSwipeDistance: {
-        type: Number,
-        default: 8,
+        type: [Number, String],
+        default: 10,
     },
 
     zIndex: {
-        type: String,
-        default: "100",
+        type: [Number, String],
+        default: 100,
     },
 
-    animationInterruptDisabled: {
-        type: Boolean,
-        default: false
-    }
 }
 

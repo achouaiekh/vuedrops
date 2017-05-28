@@ -22,7 +22,7 @@
             <ul class="dot pagination">
 
                 <li v-for="dot in dots"
-                    @click="carousel.animateSlide(dot.current)"
+                    @click="carousel.animate(dot.current)"
                     :class="{active:dot.active}"
                 >
                     <a href="#" v-text="dot.index + 1"></a>

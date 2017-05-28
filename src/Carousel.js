@@ -3,33 +3,25 @@ import  Animation from 'vuedrops-animate'
 
 export default class {
 
-
     constructor(vm) {
 
         this.vm = vm
-
         this.el = vm.$el
 
         this.initialize()
-
         this.setProps()
-
         this.setup()
-
         this.init()
-
-
         this.initEvents()
     }
 
 
     init() {
-        this.updateSlideToShow()
 
+        this.updateSlideToShow()
         this.setSlides()
         this.setDimension()
         this.autoPlay()
-
     }
 
     initialize() {
@@ -47,11 +39,8 @@ export default class {
         this.animationId = null
         this.imgLoaded = false
         this.__display = 'block'
-        this.touch = {}
-        this.touch.swipeLength = 0
-        this.touch.swipeLength = 0
+        this.touch = {swipeLength: 0}
         this.dragging = false
-        this.offestLeft = 0
     }
 
     setProps() {
@@ -68,18 +57,18 @@ export default class {
     }
 
     updateSlideToShow() {
+
         let slideToShow = this.slideToShow,
             slideToScroll = this.slideToScroll,
             screenWidth = this.screenWidth = this.screen.clientWidth
 
 
-        if (typeof slideToShow === 'number') {
+        if (typeof slideToShow === 'number')
             this.slideToShowCount = slideToShow
-        }
 
-        if (typeof slideToScroll === 'number') {
+        if (typeof slideToScroll === 'number')
             this.slideToScrollCount = slideToScroll
-        }
+
 
         Object.keys(this.breakpoints)
             .sort((a, b) => a - b)
@@ -94,14 +83,14 @@ export default class {
                 }
             })
 
+        //setup the initial current slide to meet the current dot
         let s = 0
 
-        while (true) {
-            if ((s += this.slideToScrollCount) > this.currentSlide) {
-                this.previousSlide = this.currentSlide = s - this.slideToScrollCount
-                break
-            }
-        }
+        do
+            s += this.slideToScrollCount
+        while (s <= this.currentSlide)
+
+        this.previousSlide = this.currentSlide = s
 
 
         if (this.fade) {
@@ -124,25 +113,22 @@ export default class {
 
         this.animation = new Animation({
             speed: this.speed,
-            easing: this.easing,
             context: this,
         })
 
         this.breakpoints = Object.assign({}, BREAKPOINTS, this.breakpoints)
-
 
         if (this.vertical) this.el.classList.add('vertical')
     }
 
     setSlides() {
 
+        // make sure to remove the existing cloned slides
         this.track.querySelectorAll('.slide.cloned').forEach(cloned => this.track.removeChild(cloned))
 
         if (this.fade) {
 
-            this.slides.forEach((slide, index) => {
-                this.fadeOut(index)
-            })
+            this.slides.forEach((slide, index) => this.fadeOut(index))
 
             this.fadeIn()
         }
@@ -168,12 +154,14 @@ export default class {
                 })
         }
 
+        // select all type slide (cloned and original)
         this.allSlides = Array.from(this.track.querySelectorAll('.slide'))
 
-        if (this.fade || this.vertical) this.allSlides.forEach((slide) => {
-            slide.style.width = this.screenWidth + 'px'
-        })
+        //the slides have same width if vertical or fade
+        if (this.fade || this.vertical)
+            this.allSlides.forEach((slide) => slide.style.width = this.screenWidth + 'px')
 
+        //select all image (cloned and original)
         this.imgs = Array.from(this.track.querySelectorAll('.slide img'))
 
     }
@@ -189,14 +177,18 @@ export default class {
     }
 
     setDimension() {
+
         if (this.imgLoaded) {
             this.el.style.display = this.__display
             this.setHeight(this.calculateHeight())
             this.setDots()
         }
+
         else {
+
             this.__display = this.el.style.display
             this.el.style.display = 'none'
+
             this.loadImages().then(() => {
                 this.imgLoaded = true
                 this.el.style.display = this.__display
@@ -204,12 +196,10 @@ export default class {
                 this.setDots()
             })
         }
-
-
     }
 
-    loadImages(callback = function () {
-    }, count = this.imgs.length) {
+    loadImages(callback = () => null, count = this.imgs.length) {
+
         return new Promise((resolve, reject) => {
             let i = 0,
                 _this = this
@@ -224,9 +214,8 @@ export default class {
 
     setHeight(height) {
 
-        if (this.fade) {
+        if (this.fade)
             this.track.style.height = height + 'px'
-        }
 
         else if (this.vertical) {
             this.screen.style.height = height + 'px'
@@ -287,7 +276,6 @@ export default class {
 
         this.offsetLeft = position
 
-
         return this
     }
 
@@ -297,26 +285,25 @@ export default class {
 
         let prop = this.vertical ? 'offsetHeight' : 'offsetWidth'
 
-        return (-1) * this.allSlides
-                .slice(0, position + this.slideToShowCount)
-                .reduce((initial, slide) => initial + slide[prop], 0)
+        return this.allSlides
+            .slice(0, position + this.slideToShowCount)
+            .reduce((initial, slide) => initial - slide[prop], 0)
     }
 
     autoPlay(autoplay = this.autoplay) {
 
-        if (autoplay) {
-            let _this = this
+        let _this = this
 
-            this.animationId = setInterval(() => {
-                _this.next()
-            }, 5000)
-        }
-        else {
+        if (autoplay)
+            this.animationId = setInterval(() => _this.next(), this.autoplayDelay)
+
+        else
             clearInterval(this.animationId)
-        }
+
     }
 
     setFade(opacity) {
+
         this.fadeOut(this.previousSlide, 1 - opacity)
         this.fadeIn(this.currentSlide, opacity)
     }
@@ -324,18 +311,13 @@ export default class {
 
     next() {
 
-        if (this.interrupt()) return
+        if (this.animating) return
 
         this.currentSlide += this.slideToScrollCount
 
         this.rectifyNext()
 
-        this.animateSlide()
-    }
-
-    interrupt() {
-        return (this.animationInterruptDisabled && this.animating) ||
-            this.slideToShowCount <= this.slideToScrollCount
+        this.animate()
     }
 
     rectifyNext() {
@@ -355,64 +337,69 @@ export default class {
 
     previous() {
 
-        if (this.interrupt()) return
+        if (this.animating) return
 
         this.currentSlide -= this.slideToScrollCount
 
         this.rectifyPrevious()
 
-        this.animateSlide()
+        this.animate()
     }
 
     rectifyPrevious() {
 
         if (this.currentSlide < 0) {
 
-            if (!this.fade)
+            this.currentSlide = this.slideCount - 1
+
+            if (!this.fade) {
                 this.previousSlide = this.slideCount
+                this.currentSlide = this.slideCount - 1 - this.calculateOffset()
+            }
 
-            let offset = this.slideToScrollCount === 1 ? 0 : (this.slideCount - 1) % this.slideToScrollCount
 
-            this.currentSlide = this.slideCount - 1 - offset
         }
     }
 
-    animateSlide(position = this.currentSlide, from) {
+    calculateOffset() {
 
-        if (this.interrupt()) return
+        return this.slideToScrollCount === 1 ? 0 : (this.slideCount - 1) % this.slideToScrollCount
+
+
+    }
+
+    animate(position = this.currentSlide, from) {
+
+        if (this.animating) return
 
         this.animating = true
-
-        this.animation.stop()
 
         this.currentSlide = position
 
         this.setDots()
 
-        this.animate(from).then(() => {
-            this.animating = false
-            this.previousSlide = this.currentSlide
+        this.registerHeightAnimation()
 
-        })
-    }
-
-    animate(from) {
-
-        if (this.fade) {
+        if (this.fade)
 
             if (this.calculateHeight(this.previousSlide) > this.calculateHeight(this.currentSlide))
-                return this.animateHeight().then(() => this.fadeSlide())
-
+                this.registerFadeAnimation().animate('height').then().animate('fade')
             else
-                return this.fadeSlide().then(() => this.animateHeight())
-        }
+                this.registerFadeAnimation().animate('fade').then().animate('height')
 
         else
-            return this.translateSlide(from).then(() => this.animateHeight())
+            this.registerSlideAnimation(from).animate('slide').then().animate('height')
+
+
+        return this.animation.then(() => {
+            this.animating = false
+            this.previousSlide = this.currentSlide
+        })
 
     }
 
     getDots() {
+
         let count = Math.ceil(this.slides.length / this.slideToScrollCount),
             index = -1,
             dots = []
@@ -420,8 +407,8 @@ export default class {
         while (++index < count) {
             dots.push({
                 current: this.slideToScrollCount * index,
+                active: (this.currentSlide === this.slideToScrollCount * index),
                 index,
-                active: (this.currentSlide === this.slideToScrollCount * index)
             })
         }
 
@@ -429,38 +416,34 @@ export default class {
 
     }
 
-    animateHeight() {
+    registerHeightAnimation() {
 
-        let delta = "linear"
-        if (this.fade) delta = this.delta
+        let easing = this.heightEasing,
+            from = this.calculateHeight(this.previousSlide),
+            to = this.calculateHeight(this.currentSlide)
 
-        return this.animation
-            .from(this.calculateHeight(this.previousSlide))
-            .to(this.calculateHeight(this.currentSlide))
-            .play(this.setHeight, {delta})
+        return this.animation.register({height: this.setHeight}).from(from).to(to).easing(easing)
+
+
     }
 
-    translateSlide(from, to) {
+    registerSlideAnimation(from, to) {
 
         from = from ? from : this.calculateLeft(this.previousSlide)
         to = to ? to : this.calculateLeft(this.currentSlide)
 
-        let speed = this.constantSpeed ?
-            Math.ceil(Math.abs(to - from) / this.screenWidth) * this.slideToScrollCount * this.speed :
-            this.speed
+        let during = this.constantSpeed ?
+                Math.ceil(Math.abs(to - from) / this.screenWidth) * this.slideToScrollCount * this.speed :
+                this.speed,
 
+            easing = this.slideEasing
 
-        return this.animation
-            .from(from)
-            .to(to)
-            .play(this.setLeft, {speed})
+        return this.animation.register({slide: this.setLeft}).options({from, to, easing, during})
     }
 
-    fadeSlide() {
-        return this.animation
-            .from(0)
-            .to(1)
-            .play(this.setFade, {delta: "linear"})
+    registerFadeAnimation() {
+
+        return this.animation.register({fade: this.setFade}).from(0).to(1).easing(this.fadeEasing)
     }
 
     setDots() {
@@ -469,12 +452,12 @@ export default class {
 
     initEvents(remove = false) {
 
-        let action = remove ? 'remove' : 'add'
+        let eventListener = remove ? 'removeEventListener' : 'addEventListener'
 
         "mousedown touchstart mousemove touchmove mouseup touchend mouseleave touchcancel dblclick".split(" ")
-            .forEach((eventType) => this.track[`${action}EventListener`](eventType, this.proxy(this.swipeHandler)))
+            .forEach((eventType) => this.track[eventListener](eventType, this.proxy(this.swipeHandler)))
 
-        window[`${action}EventListener`]('resize', this.proxy(this.init))
+        window[eventListener]('resize', this.proxy(this.init))
     }
 
 
@@ -484,7 +467,7 @@ export default class {
 
         this.touch.fingerCount = event.changedTouches !== undefined ? event.changedTouches.length : 1
 
-        if (this.disableSwipe || this.fade || this.interrupt() || this.touch.fingerCount !== 1) return false
+        if (this.disableSwipe || this.fade || this.animating || this.touch.fingerCount !== 1) return false
 
 
         switch (event.type) {
@@ -521,10 +504,6 @@ export default class {
 
         this.dragging = true
 
-        this.touch.animating = this.animating
-
-        this.animation.stop()
-
         let touches = event.changedTouches && event.changedTouches[0]
 
         this.touch.startX = this.touch.curX = touches !== undefined ? touches.pageX : event.clientX
@@ -532,9 +511,9 @@ export default class {
 
         this.touch.swipeLength = 0
 
-        this.touch.offsetLeft = this.offsetLeft
+        this.touch.originLeft = this.calculateLeft(this.previousSlide)
 
-        this.setLeft(this.touch.offsetLeft)
+        this.setLeft(this.touch.originLeft)
 
     }
 
@@ -553,14 +532,15 @@ export default class {
             this.touch.curY - this.touch.startY :
             this.touch.curX - this.touch.startX
 
-        let offsetLeft = this.touch.offsetLeft + this.touch.swipeLength
+        let left0 = this.calculateLeft(0),
+            leftlast = this.calculateLeft((Math.ceil(this.slides.length / this.slideToScrollCount) - 1) * this.slideToScrollCount)
 
-        this.touch.direction = Math.sign(this.touch.swipeLength)
+        this.touch.offsetLeft = this.touch.originLeft + this.touch.swipeLength
 
-        if (offsetLeft > this.calculateLeft(0) && this.touch.swipeLength > 0) this.touch.offsetLeft = this.calculateLeft(this.slideCount)
-        if (offsetLeft < this.calculateLeft(Math.trunc((this.slides.length - 1) / this.slideToShowCount) * this.slideToShowCount) && this.touch.swipeLength < 0) this.touch.offsetLeft = this.calculateLeft(-(this.slideCount - 1) % this.slideToScrollCount - 1)
+        if (this.touch.offsetLeft > left0) this.touch.offsetLeft = left0
+        if (this.touch.offsetLeft < leftlast) this.touch.offsetLeft = leftlast
 
-        this.setLeft(this.touch.offsetLeft + this.touch.swipeLength)
+        this.setLeft(this.touch.offsetLeft)
     }
 
     swipeEnd(event) {
@@ -571,10 +551,10 @@ export default class {
 
         this.track.style.cursor = "default"
 
-        let offsetLeft = this.touch.offsetLeft + this.touch.swipeLength
+        let offsetLeft = this.touch.offsetLeft
 
-        if (Math.abs(this.touch.swipeLength) < this.minSwipeDistance && !this.touch.animating)
-            this.animateSlide(this.previousSlide, offsetLeft)
+        if (Math.abs(this.touch.swipeLength) < this.minSwipeDistance)
+            this.animate(this.previousSlide, offsetLeft)
 
         else {
 
@@ -583,39 +563,26 @@ export default class {
 
 
             while (++i) {
-                this.currentSlide -= direction * this.slideToScrollCount
-
-                this.rectifyNext()
-                this.rectifyPrevious()
 
                 let position = this.calculateLeft(this.currentSlide)
                 if (direction * (position - offsetLeft) >= 0 || i > this.slideCount) break
+                this.currentSlide -= direction * this.slideToScrollCount
             }
 
+            this.animate(this.currentSlide, offsetLeft)
 
-            this.animateSlide(this.currentSlide, offsetLeft)
+
         }
 
     }
 
     proxy(fn, object = this) {
+
         return function () {
             return fn.apply(object, arguments)
         }
     }
 
-    sort(object) {
-
-        let temp = {}
-
-        Object.keys(object)
-            .sort((a, b) => object[a] - object[b])
-            .forEach((key) => {
-                temp[key] = object[key]
-            })
-
-        return object = temp
-    }
 
 }
 

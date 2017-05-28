@@ -1,5 +1,7 @@
-.DS_Store
 node_modules/
-dist/
-npm-debug.log
-yarn-error.log
+assets/
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/vuedrops-animate.iml
+.idea/workspace.xml
