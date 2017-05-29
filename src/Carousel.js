@@ -88,9 +88,11 @@ export default class {
 
         do
             s += this.slideToScrollCount
-        while (s <= this.currentSlide)
+        while (s < this.currentSlide)
 
         this.previousSlide = this.currentSlide = s
+
+        console.log('current', s)
 
 
         if (this.fade) {
@@ -182,9 +184,8 @@ export default class {
             this.el.style.display = this.__display
             this.setHeight(this.calculateHeight())
             this.setDots()
-        }
 
-        else {
+        } else {
 
             this.__display = this.el.style.display
             this.el.style.display = 'none'
@@ -384,6 +385,7 @@ export default class {
 
             if (this.calculateHeight(this.previousSlide) > this.calculateHeight(this.currentSlide))
                 this.registerFadeAnimation().animate('height').then().animate('fade')
+
             else
                 this.registerFadeAnimation().animate('fade').then().animate('height')
 
@@ -394,7 +396,7 @@ export default class {
         return this.animation.then(() => {
             this.animating = false
             this.previousSlide = this.currentSlide
-        })
+        }, this)
 
     }
 
@@ -427,10 +429,8 @@ export default class {
 
     }
 
-    registerSlideAnimation(from, to) {
-
-        from = from ? from : this.calculateLeft(this.previousSlide)
-        to = to ? to : this.calculateLeft(this.currentSlide)
+    registerSlideAnimation(from = this.calculateLeft(this.previousSlide),
+                           to = this.calculateLeft(this.currentSlide)) {
 
         let during = this.constantSpeed ?
                 Math.ceil(Math.abs(to - from) / this.screenWidth) * this.slideToScrollCount * this.speed :

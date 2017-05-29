@@ -1,36 +1,27 @@
 {
   "name": "vuedrop-carousel",
-
   "description": "Responsive carousel with Vue.js",
-
   "keywords": [
     "carousel",
     "slide",
     "vuedrops",
     "vuejs"
   ],
-
   "version": "1.0.0",
-
   "author": "Amine Chouaiekh <amine.choyekh@gmail.com>",
-
   "main": "src/index",
-
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/achouaiekh/vuedrops-carousel.git"
   },
-
   "dependencies": {
     "vue": "^2.2.1",
     "vuedrops-animate": "^1.0.11"
   },
-
   "devDependencies": {
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
@@ -42,16 +33,13 @@
     "sass-loader": "^5.0.1",
     "vue-loader": "^11.1.4",
     "vue-template-compiler": "^2.2.1",
-    "vuedrops-animate": "^1.0.24",
+    "vuedrops-animate": "^1.0.25",
     "webpack": "^2.2.0",
     "webpack-dev-server": "^2.2.0"
   },
-
   "license": "ISC",
-
   "bugs": {
     "url": "https://github.com/achouaiekh/vuedrops-carousel/issues"
   },
-
   "homepage": "https://github.com/achouaiekh/vuedrops-carousel#readme"
 }
