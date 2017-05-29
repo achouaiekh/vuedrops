@@ -7,7 +7,7 @@
     "vuedrops",
     "vuejs"
   ],
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Amine Chouaiekh <amine.choyekh@gmail.com>",
   "main": "dist/vuedrops-carousel.js",
   "scripts": {
