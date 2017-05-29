@@ -1,12 +1,17 @@
-import Vue from 'vue'
-import slide from './slide.vue'
-import carousel from './carousel.vue'
+import Vue from "vue"
+
+import Carousel from "../dist/vuedrops-carousel"
+
+import {slide, carousel} from "../dist/vuedrops-carousel"
+
+console.log(Carousel, slide, carousel)
 
 
-Vue.component('slide', slide)
-Vue.component('carousel', carousel)
 
-var vue = new Vue({
 
+
+
+let vue = new Vue({
     el: '#app',
+    components: {slide, carousel}
 })

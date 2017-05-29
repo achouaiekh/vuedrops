@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b1728dd8-1a23-47d2-bf9b-3ef38f5ed2bd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/vuedrops-carousel.js" afterPath="$PROJECT_DIR$/dist/vuedrops-carousel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.js" afterPath="$PROJECT_DIR$/src/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack.config.js" afterPath="$PROJECT_DIR$/webpack.config.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,9 +21,22 @@
       <file leaf-file-name="Carousel.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Carousel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
+            <state relative-caret-position="1140">
               <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="carousel.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/carousel.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-578">
+              <caret line="44" column="11" lean-forward="true" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
+              <folding>
+                <element signature="e#1045#1078#0" expanded="true" />
+                <marker date="1495983706000" expanded="true" signature="2319:2652" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -27,21 +44,11 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+            <state relative-caret-position="60">
+              <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
               <folding>
-                <element signature="e#0#33#0" expanded="true" />
+                <element signature="e#0#31#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dist/build.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="124" column="2995" lean-forward="false" selection-start-line="124" selection-start-column="2993" selection-end-line="124" selection-end-column="2995" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -49,8 +56,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+            <state relative-caret-position="225">
+              <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -58,33 +65,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
+      <file leaf-file-name="vuedrops-carousel.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dist/vuedrops-carousel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="28" lean-forward="false" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
-              <folding>
-                <marker date="1496063463000" expanded="true" signature="0:1235" ph="{&quot;name&quot;: &quot;vuedrop-carousel&quot;...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="7" lean-forward="false" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+            <state relative-caret-position="120">
+              <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="159">
+              <caret line="11" column="11" lean-forward="false" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+            <state relative-caret-position="334">
+              <caret line="34" column="29" lean-forward="false" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -92,50 +97,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="easing.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/vuedrops-animate/src/easing.js">
+      <file leaf-file-name="slide.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/slide.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding>
-                <marker date="1495929067000" expanded="true" signature="597:924" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="659:693" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="715:771" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="795:854" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="860:922" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="942:4087" ph="{&quot;easeOutBounce&quot;: bounceOut...}" />
-                <marker date="1495929067000" expanded="true" signature="958:982" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="998:1027" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="1053:1082" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="1108:1157" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="1185:1281" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="1307:1340" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="1367:1408" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="1437:1537" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="1563:1600" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="1627:1668" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="1697:1801" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="1827:1868" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="1895:1936" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="1965:2074" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="2099:2142" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="2168:2207" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="2235:2283" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="2308:2365" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="2391:2448" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="2476:2620" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="2645:2692" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="2718:2765" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="2793:2929" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="2957:3072" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="3101:3214" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="3245:3453" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="3478:3529" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="3555:3622" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="3650:3829" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="3856:3900" ph="{...}" />
-                <marker date="1495929067000" expanded="true" signature="3960:4085" ph="{...}" />
-              </folding>
+            <state relative-caret-position="454">
+              <caret line="41" column="19" lean-forward="false" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -143,8 +110,8 @@
       <file leaf-file-name="webpack.config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webpack.config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="15" lean-forward="false" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+            <state relative-caret-position="180">
+              <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -162,8 +129,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>registerHeigh</find>
-      <find>animateS</find>
       <find>animateSlide</find>
       <find>calculate</find>
       <find>calculateH</find>
@@ -188,10 +153,12 @@
       <find>use(</find>
       <find>swipe</find>
       <find>registerSlideAnimation</find>
-      <find>animate(</find>
-      <find>carousel</find>
       <find>Carousel</find>
       <find>Slide</find>
+      <find>var</find>
+      <find>default</find>
+      <find>carousel</find>
+      <find>animate(</find>
     </findStrings>
     <replaceStrings>
       <replace>this.touch.left</replace>
@@ -215,12 +182,14 @@
         <option value="$PROJECT_DIR$/src/props.js" />
         <option value="$PROJECT_DIR$/src/src/Chain.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/dist/build.js" />
         <option value="$PROJECT_DIR$/node_modules/vuedrops-animate/src/easing.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/Carousel.js" />
+        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/index.js" />
+        <option value="$PROJECT_DIR$/webpack.config.js" />
+        <option value="$PROJECT_DIR$/src/main.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -455,12 +424,12 @@
       <workItem from="1495921170162" duration="7010000" />
       <workItem from="1495976702274" duration="13935000" />
       <workItem from="1496004915826" duration="5057000" />
-      <workItem from="1496060164122" duration="3452000" />
+      <workItem from="1496060164122" duration="8062000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123295000" />
+    <option name="totallyTimeSpent" value="127905000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
@@ -497,16 +466,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/carousel.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1695">
-          <caret line="113" column="18" lean-forward="false" selection-start-line="113" selection-start-column="18" selection-end-line="113" selection-end-column="18" />
-          <folding>
-            <marker date="1495983706000" expanded="true" signature="2319:2652" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -545,6 +504,7 @@
         <state relative-caret-position="1695">
           <caret line="113" column="18" lean-forward="false" selection-start-line="113" selection-start-column="18" selection-end-line="113" selection-end-column="18" />
           <folding>
+            <element signature="e#1045#1078#0" expanded="true" />
             <marker date="1495983706000" expanded="true" signature="2319:2652" ph="{...}" />
           </folding>
         </state>
@@ -581,6 +541,7 @@
         <state relative-caret-position="1695">
           <caret line="113" column="18" lean-forward="true" selection-start-line="113" selection-start-column="18" selection-end-line="113" selection-end-column="18" />
           <folding>
+            <element signature="e#1045#1078#0" expanded="true" />
             <marker date="1495983706000" expanded="true" signature="2319:2652" ph="{...}" />
           </folding>
         </state>
@@ -738,16 +699,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/src/app.js" />
     <entry file="file://$PROJECT_DIR$/src/src/easing.js" />
-    <entry file="file://$PROJECT_DIR$/src/carousel.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-          <folding>
-            <marker date="1495983706000" expanded="true" signature="2319:2652" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/src/OptionWrapper.js" />
     <entry file="file://$PROJECT_DIR$/src/src/Chain.js" />
     <entry file="file://$PROJECT_DIR$/src/props.js">
@@ -757,47 +708,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/slide.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="19" lean-forward="false" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="7" lean-forward="false" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="15" lean-forward="false" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="28" lean-forward="false" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
-          <folding>
-            <marker date="1496063463000" expanded="true" signature="0:1235" ph="{&quot;name&quot;: &quot;vuedrop-carousel&quot;...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -847,16 +762,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/vuedrops-animate/src/Chain.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -865,29 +770,92 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="11" column="11" lean-forward="false" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Carousel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
+        <state relative-caret-position="1140">
           <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/carousel.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-578">
+          <caret line="44" column="11" lean-forward="true" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
+          <folding>
+            <element signature="e#1045#1078#0" expanded="true" />
+            <marker date="1495983706000" expanded="true" signature="2319:2652" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+        <state relative-caret-position="60">
+          <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
           <folding>
-            <element signature="e#0#33#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/vuedrops-carousel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/slide.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="41" column="19" lean-forward="false" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dist/build.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="124" column="2995" lean-forward="false" selection-start-line="124" selection-start-column="2993" selection-end-line="124" selection-end-column="2995" />
+        <state relative-caret-position="413">
+          <caret line="83" column="137079" lean-forward="false" selection-start-line="83" selection-start-column="137079" selection-end-line="83" selection-end-column="137079" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="34" column="29" lean-forward="false" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

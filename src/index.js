@@ -1,9 +1,10 @@
-import Carousel from './carousel'
-import Slide from './slide'
+import slide from './slide.vue'
+import carousel from './carousel.vue'
+
 
 function plugin (Vue) {
-    Vue.component({Slide})
-    Vue.component({Carousel})
+    Vue.component({slide})
+    Vue.component({carousel})
 }
 
 
@@ -14,4 +15,4 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default plugin
 
-export {Slide, Carousel}
+export {slide, carousel}
